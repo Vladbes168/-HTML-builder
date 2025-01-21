@@ -11,6 +11,8 @@ fs.readdir(
       return;
     }
     files.forEach((file) => {
+      if (file.isDirectory()) return;
+
       const fileName = file.name;
       fs.stat(path.join(__dirname, 'secret-folder', fileName), (err, stats) => {
         if (err) {
